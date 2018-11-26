@@ -1,0 +1,92 @@
+Algorithm3.5 Hashing with separate chaining
+
+
+public class SeparateChainingHashST<Key, Value>{
+
+	private int N;
+	private int M;
+	private SequentialSearchST<Key, Value>[] st;
+
+	public SeparateChainingHashST(){	this(997);  	}
+	public SeparateChainingHashST(int M){
+		this.M = M;
+		st = (SeauentialSearchST<Key, Value>) new SequentialSearchST[M];
+		for (int i = 0; i < M; i++) {
+			st[i] = new SequentialSearchST();
+		}
+	}
+
+//optional
+	private void resize(int cap){
+		SeparateChainingHashST<Key, Value> t;
+		t = new SeparateChainingHashST<Key, Value>(cap);
+		for (int i = 0; i < M; i++)
+			if (keys[i] != null){
+				t.put(keys[i], vals[i])
+			}
+		keys = t.keys;
+		vals = t.vals;
+		M	 = t.M;
+	}
+
+	private int hash(Key key){
+		return (key.hashCode() & 0*7fffffff) % M;
+	}
+
+	private Value get(Key key){
+		return (Value) st[hash(Key)].get(key);
+	}
+
+	private void put(Key key, Value value){
+		if(N >= M/2)	resize(2*M);
+		st[hash(key)].put(key, val);
+	}
+}
+
+
+
+
+
+
+public class SequentialSearchST<Key, Value>{
+	private Node first;
+
+	private class Node{
+		Key key;
+		Value val;
+		Node next;
+
+		public Node(Key key, Value val, Node next){
+			this.key = key;
+			this.val = val;
+			this.next = next;
+		}
+	}
+
+	public Value get(Key key){
+		for (Node x = first; x != null; x = x.next){
+			if(key.equals(x.key))	return x.val;
+		}
+		return null;
+	}
+
+	public void put(Key key, Value val){
+		for (Node x = first; x != null; x = x.next){
+			if(key.equals(x.key)){
+				x.val = val;
+				return;
+			}
+		}
+		first = new Node(key, val, first);
+	}
+}
+
+
+
+
+
+
+
+
+
+

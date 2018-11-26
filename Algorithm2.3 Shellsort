@@ -1,0 +1,28 @@
+Algorithm2.3 Shellsort
+
+
+public class Shell
+{
+	public static void sort(Compareble[] a)
+	{
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

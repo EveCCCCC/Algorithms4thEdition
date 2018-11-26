@@ -1,0 +1,26 @@
+Algorithm3 A symbol-table client
+
+
+public static void main(String[] args){
+	int minlen = Interger.parseInt(args[0]);
+
+	ST<String, Interger> st = new ST<String, Interger>();
+
+	while(!StdIn.isEmpty()){
+		String word = StdIn.readString();
+
+		if (word.length < minlen) continue;
+
+		if(!st.contains(word))	st.put(word, 1);
+		else					st.put(word, st.get(word) + 1);
+	}
+
+
+	String max = " ";
+	st.put(max, 0);
+	for (String word : st.keys()){
+		if st.get(word) > st.get(max)
+			max = word;
+	}
+	StdOut.pringln(max + " " + st.get(max));
+}
