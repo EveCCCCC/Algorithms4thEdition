@@ -1,0 +1,31 @@
+Algorithm4 DepthFirstSearch
+
+
+public class DepthFirstSearch{
+	private boolean[] marked;
+	private int count;
+
+	public DepthFirstSearch(Graph G, int s){
+		marked = new boolean[G.V()];
+		dfs(G, s);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
